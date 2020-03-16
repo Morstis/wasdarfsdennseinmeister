@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AdminComponent } from './admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +22,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserUIComponent } from './user-ui/user-ui.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LoginComponent } from './login/login.component';
-import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/app';
 import 'firebase/database';
 
@@ -51,7 +49,7 @@ import 'firebase/database';
     MatSlideToggleModule,
     MatCardModule
   ],
-  providers: [AngularFireDatabase, AngularFireAuth],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

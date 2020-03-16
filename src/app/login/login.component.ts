@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
     });
   }
   send(loginFormValue: { email: string; password: string }) {
-    this.afAuth.auth
+    this.afAuth
       .signInWithEmailAndPassword(loginFormValue.email, loginFormValue.password)
       .catch(res => (this.loginmessage = 'Fehler: ' + res))
       .then(res => {

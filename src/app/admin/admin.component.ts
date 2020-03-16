@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import 'firebase/database';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -73,7 +72,10 @@ export class AdminComponent {
       });
   }
   deleteGericht(key) {
-    this.gerichteRef.remove(key);
+    this.gerichteRef.remove(key).catch(err => {
+      this.error = err.message;
+      this.showUpdate();
+    });
   }
   trackFbObjects = (idx, obj) => obj.$key;
 

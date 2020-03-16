@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+// import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,6 @@ export class AppComponent implements OnInit {
     });
   }
   logout() {
-    this.afAuth.auth.signOut();
+    this.afAuth.signOut();
   }
 }
