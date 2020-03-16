@@ -1,0 +1,70 @@
+<div id="container">
+  <form novalidate [formGroup]="form">
+    <h1>Admin Bereich</h1>
+
+    <div class="form-group">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          autocomplete="off"
+          required
+          #firstInput
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="number"
+          placeholder="Größe"
+          formControlName="groesse"
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="number"
+          placeholder="Preis"
+          formControlName="preis"
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <button
+      mat-raised-button
+      [disabled]="!form.valid"
+      (click)="send(form.value)"
+    >
+      Senden
+    </button>
+  </form>
+  <aside id="update">
+    <h2 *ngIf="trigger" [ngClass]="{ error: error }">
+      {{ error ? 'Fehler: ' + error : 'Updated' }}
+    </h2>
+  </aside>
+  <aside id="log" #log>
+    <mat-card
+      *ngFor="
+        let gericht of gerichte$ | async;
+        let i = index;
+        trackBy: trackFbObjects
+      "
+      @log
+    >
+      <span>Name: {{ gericht.name }}</span>
+      <span>Größe: {{ gericht.groesse }}</span>
+      <span>Preis: {{ gericht.preis }}</span>
+      <span (click)="deleteGericht(gericht.key)">X</span>
+    </mat-card>
+  </aside>
+  <aside id="removeUserList">
+    <button mat-raised-button (click)="removeUserList()">
+      Alle Nutzer LÖSCHEN!
+    </button>
+  </aside>
+</div>

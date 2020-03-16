@@ -1,0 +1,9 @@
+<mat-card>
+  <label>
+    <span>Dunkles Design</span>
+    <mat-slide-toggle
+      (change)="changeTheme($event)"
+      [checked]="theme$ | async"
+    ></mat-slide-toggle>
+  </label>
+</mat-card>

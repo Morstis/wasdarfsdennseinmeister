@@ -1,0 +1,72 @@
+#container {
+  display: grid;
+  height: 100%;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  grid-template-areas:
+    '. form log'
+    '. form log'
+    '. form log';
+
+  form {
+    grid-area: form;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    * {
+      width: 100%;
+    }
+  }
+
+  #update {
+    grid-area: updated;
+    display: flex;
+    h2 {
+      animation: updateAnim 500ms ease-out;
+
+      margin: auto;
+      color: green;
+    }
+  }
+  #log {
+    grid-area: log;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow: auto;
+    max-height: 100vh;
+    mat-card {
+      display: flex;
+      margin: 1rem 1rem 0 1rem;
+      span {
+        margin: auto;
+      }
+      span:last-child {
+        cursor: pointer;
+        font-size: bold;
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}
+// ::ng-deep .mat-select-panel {
+//   background-color: white !important;
+//   mat-option {
+//     color: black;
+//   }
+// }
+
+@keyframes updateAnim {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

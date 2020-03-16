@@ -1,0 +1,72 @@
+<div id="container">
+  <form novalidate [formGroup]="form">
+    <h1>User Bereich</h1>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Vorname"
+        required
+        formControlName="vorname"
+        autocomplete="off"
+      />
+    </mat-form-field>
+    <label>Gericht</label>
+    <div formGroupName="gericht">
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="name">
+            <mat-option
+              *ngFor="let gericht of gerichte$ | async; let i = index"
+              [value]="gericht.name"
+              (click)="updateForm(i)"
+            >
+              {{ gericht.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="number"
+            placeholder="Größe"
+            formControlName="groesse"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="number"
+            placeholder="Preis"
+            formControlName="preis"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button
+      mat-raised-button
+      [disabled]="!form.valid"
+      (click)="send(form.value)"
+    >
+      Senden
+    </button>
+  </form>
+  <aside id="log" #log>
+    <mat-card
+      @log
+      *ngFor="
+        let user of users$ | async;
+        let i = index;
+        trackBy: trackFbObjects
+      "
+    >
+      <span>Vorname: {{ user.vorname }}</span>
+      <span>Gerichtname: {{ user.gericht.name }}</span>
+      <span>Größe: {{ user.gericht.groesse }}</span>
+      <span>Preis: {{ user.gericht.preis }}</span>
+    </mat-card>
+  </aside>
+</div>

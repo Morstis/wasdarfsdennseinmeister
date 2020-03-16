@@ -1,0 +1,14 @@
+{
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    "gerichte": {
+    ".read": true,
+    ".write": "'WQvJOkdqcuQ1koYX0euVTG5xFRl1' === auth.uid"
+    },
+    "users": {
+    ".read": true,
+    ".write": true,
+    }
+
+  }
+}

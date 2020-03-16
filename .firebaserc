@@ -1,0 +1,17 @@
+{
+  "targets": {
+    "wasdarfsseinmeiseter": {
+      "hosting": {
+        "api": [
+          "wasdarfsseinmeiseter"
+        ],
+        "website": [
+          "wasdarfsdennseinmeisterng"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wasdarfsseinmeiseter"
+  }
+}
